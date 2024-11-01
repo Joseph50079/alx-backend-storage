@@ -13,8 +13,8 @@ class Cache:
     """
 
     def __init__(self):
-        _redis = redis.Redis()
-        _redis.flushdb()
+        self._redis = redis.Redis()
+        self._redis.flushdb()
 
     def store(self, data: typing.Union[float, str, bytes, int]) -> str:
         """ store() method for storing data
@@ -27,6 +27,6 @@ class Cache:
         setd = {}
         key = str(uuid.uuid4())
         setd[key] = data
-        redis.Redis().mset(setd)
+        self._redis.mset(setd)
 
         return key
