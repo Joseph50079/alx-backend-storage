@@ -18,4 +18,7 @@ def top_students(mongo_collection):
         else:
             average = 0
         mongo_collection.update_one({"_id": student["_id"]}, {"$set": {"averageScore": average}})
-    return mongo_collection.find({"averageScore": {"$exists": True}}).sort({"averageScore": -1})
+    all_student = mongo_collection.find({"averageScore": {"$exists": True}}).sort({"averageScore": -1})
+    if all_student:
+        return all_students
+    return []
