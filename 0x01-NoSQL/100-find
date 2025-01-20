@@ -1,0 +1,2 @@
+// find by match
+db.school.find({"name" : {"$regex" : "^ALX"}})
